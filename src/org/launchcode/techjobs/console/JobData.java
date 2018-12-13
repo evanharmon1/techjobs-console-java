@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -20,6 +21,22 @@ public class JobData {
     private static Boolean isDataLoaded = false;
 
     private static ArrayList<HashMap<String, String>> allJobs;
+
+    public static ArrayList<HashMap<String, String>> findByValue(String term) {
+        loadData();
+
+        ArrayList<HashMap<String, String>> results = new ArrayList<>();
+
+        for (HashMap<String, String> rows : allJobs) {
+            for (Map.Entry<String, String> row : rows.entrySet()) {
+                if (row.getValue().toLowerCase().contains(term.toLowerCase())) {
+                    results.add(rows);
+                    break;
+                }
+            }
+        }
+        return results;
+    }
 
     /**
      * Fetch list of all values from loaded data,
