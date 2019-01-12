@@ -118,6 +118,7 @@ public class TechJobs {
                     System.out.println(job.getKey() + " : " + job.getValue());
                 }
                 System.out.println("*****");
+                System.out.println("");
             }
         }
         else {
